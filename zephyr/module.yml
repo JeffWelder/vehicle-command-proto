@@ -1,0 +1,13 @@
+name: vehicle_command_proto
+
+# This repository doubles as a Zephyr module so that the firmware (tesla_key)
+# can consume Tesla's modern signed-command protobufs via nanopb without
+# vendoring copies of the .proto files.
+#
+# The module deliberately contributes no CMake or Kconfig of its own: the
+# application drives nanopb generation with zephyr_nanopb_sources() and locates
+# the .proto / .options files through the ZEPHYR_VEHICLE_COMMAND_PROTO_MODULE_DIR
+# variable that Zephyr exports for every module. Only universal_message.proto
+# (package UniversalMessage) and signatures.proto (package Signatures) are used;
+# vcsec.proto is intentionally NOT consumed because its `package VCSEC` collides
+# with the firmware's local monolithic protobuf/VCSEC.proto.

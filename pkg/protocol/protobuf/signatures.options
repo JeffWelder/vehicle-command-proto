@@ -1,0 +1,21 @@
+# nanopb fixed sizing for the modern Signatures.* messages so nanopb emits
+# static arrays (no malloc) on the firmware. Sizes follow the protocol:
+# uncompressed P-256 public key = 65 B, epoch id = 16 B, AES-GCM nonce = 12 B,
+# AES-GCM tag = 16 B, HMAC-SHA256 tag = 32 B.
+
+Signatures.KeyIdentity.public_key                            max_size:65
+
+Signatures.AES_GCM_Personalized_Signature_Data.epoch        max_size:16
+Signatures.AES_GCM_Personalized_Signature_Data.nonce        max_size:12
+Signatures.AES_GCM_Personalized_Signature_Data.tag          max_size:16
+
+Signatures.AES_GCM_Response_Signature_Data.nonce            max_size:12
+Signatures.AES_GCM_Response_Signature_Data.tag              max_size:16
+
+Signatures.HMAC_Signature_Data.tag                          max_size:32
+
+Signatures.HMAC_Personalized_Signature_Data.epoch          max_size:16
+Signatures.HMAC_Personalized_Signature_Data.tag            max_size:32
+
+Signatures.SessionInfo.publicKey                            max_size:65
+Signatures.SessionInfo.epoch                                max_size:16

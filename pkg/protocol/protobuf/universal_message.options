@@ -1,0 +1,12 @@
+# nanopb fixed sizing for the modern UniversalMessage.* envelope. Routing
+# addresses and uuids are 16 B. The command ciphertext we send and any inner
+# payload / serialized session_info we receive are bounded well under the BLE
+# MTU (252 B) and the firmware's 256 B protobuf buffer.
+
+UniversalMessage.Destination.routing_address                max_size:16
+UniversalMessage.SessionInfoRequest.public_key              max_size:65
+UniversalMessage.SessionInfoRequest.challenge               max_size:16
+UniversalMessage.RoutableMessage.protobuf_message_as_bytes  max_size:192
+UniversalMessage.RoutableMessage.session_info               max_size:128
+UniversalMessage.RoutableMessage.request_uuid               max_size:16
+UniversalMessage.RoutableMessage.uuid                       max_size:16
