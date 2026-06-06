@@ -1,0 +1,8 @@
+# nanopb fixed sizing for the modern VCSEC payload + pairing messages so nanopb
+# emits static arrays (no malloc) on the firmware.
+
+VCSEC.KeyIdentifier.publicKeySHA1            max_size:4
+VCSEC.PublicKey.PublicKeyRaw                 max_size:65
+VCSEC.SignedMessage.protobufMessageAsBytes   max_size:200
+VCSEC.InformationRequest.publicKey           max_size:65
+VCSEC.WhitelistInfo.whitelistEntries         max_count:4
